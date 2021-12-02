@@ -1,12 +1,6 @@
 import csv
 import os
 
-# eventually have these passed as command line arguments 
-# something like python update_csv.py add name_to_add
-add_file = "test_data/test_add_file.csv"
-complete_file = "test_data/test_complete_list.csv"
-delete_file = "test_data/test_delete_file.csv"
-
 def get_ids_header(file_name):
     ids = set()
     header = []
@@ -54,36 +48,35 @@ def delete_from_complete(delete_ids, complete_name, header):
 
 def get_input():
     print("What would you like to do today?")
-    mode = input("Enter 'a' for add entries, 'd' for delete entries, and 'c' for cancel")
+    print("Enter 'a' for add entries, 'd' for delete entries, and 'c' for cancel")
+    mode = input()
     if mode == 'c':
         return
-    complete = input("What's the path to the complete csv of entries?")
+    print("What's the path to the complete csv of entries?")
+    complete = input()
     ids_present, header = get_ids_header(complete)
     if mode == 'a':
-        add = input("What's the path to the csv of entries to add?")  
+        print("What's the path to the csv of entries to add?")  
+        add = input()
         add_to_complete(add, complete, ids_present, header)
-    if mode == 'd':
-        delete = input("What's the path to the csv of entries to delete?")
-        confirm = input("Are you sure you want to delete %s (y/n)? This action cannot be undone." %(delete))
+        print("Adding successful")
+    elif mode == 'd':
+        print("What's the path to the csv of entries to delete?")
+        delete = input()
+        print("Are you sure you want to delete %s (y/n)? This action cannot be undone." %(delete))
+        confirm = input()
         if confirm == 'y':
             ids_to_delete = get_ids_header(delete)[0]
             delete_from_complete(ids_to_delete, complete, header)
+            print("Deleting succesful")
         elif confirm == 'n':
             return
         else:
-            print("input not valid, try again")
+            print("Input not valid, try again")
             get_input()
     else:
-        print("input not valid, please try again")
+        print("Input not valid, please try again")
         get_input()
 
-        
-        
-
 if __name__ == "__main__":
-    # deleting contents of add to verify same before and after
-    # eventually do this formally as test
-    ids_present, header = get_ids_header(complete_file)
-    ids_to_delete = get_ids_header(add_file)[0]
-    add_to_complete(add_file, complete_file, ids_present, header)
-    delete_from_complete(ids_to_delete, complete_file, header)
+    get_input()
