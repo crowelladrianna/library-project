@@ -17,3 +17,6 @@
 \$ python3 update_csv.py) 
 
 6. Follow prompted instructions. When asked for path to file, if you placed update_csv.py in the correct folder, you can just use the file name 
+
+### Notes
+Currently records to add that are already present are ignored. If they should be updated instead, this can be changed.
