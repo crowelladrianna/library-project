@@ -1,6 +1,6 @@
 ## Update Records CSV
 
-1. Place update_csv.py in same folder as records CSV and CSVs with records to add or delete  
+1. Place update_csv.py in same folder as complete records CSV and CSVs with records to add or delete  
 
 2. Navigate to Terminal (Mac) or Command Prompt (Windows)  
 
